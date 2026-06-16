@@ -11,4 +11,6 @@ docker compose build --no-cache
 docker compose run --rm frontend sh -lc 'npm i'
 
 # DB
-docker compose run --rm backend sh -lc 'bundle exec rails db:drop db:create'
+docker compose run --rm backend sh -lc 'bundle exec rails db:drop db:create db:migrate'
+
+docker compose stop

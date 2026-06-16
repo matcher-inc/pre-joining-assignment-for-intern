@@ -8,7 +8,7 @@ default: &default
 
 development:
   <<: *default
-  database: my_app
+  database: <%= ENV.fetch("DATABASE_TABLE_NAME") { 'my_app' } %>
   username: root
   password: ROOT
   socket: /var/lib/mysql/mysql.sock

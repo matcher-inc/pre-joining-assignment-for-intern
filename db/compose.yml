@@ -3,3 +3,8 @@ services:
     build:
       context: .
       dockerfile: ./Dockerfile
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    volumes:
+      - ./.data:/var/lib/mysql
+      - ./my.cnf:/etc/my.cnf

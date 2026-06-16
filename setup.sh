@@ -3,6 +3,7 @@
 # Setup Env
 cp ./backend/.env.example ./backend/.env
 cp ./frontend/.env.example ./frontend/.env
+cp ./db/.env.example ./db/.env
 
 docker compose build --no-cache
 

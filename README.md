@@ -10,8 +10,11 @@
 
 ## セットアップ
 
+> [!IMPORTANT]
+> 必ず Fork をしてください。
+
 ```sh
-git clone https://github.com/matcher-inc/pre-joining-assignment-for-intern.git ~
+git clone https://github.com/<owner>/pre-joining-assignment-for-intern.git ~
 cd ~/pre-joining-assignment-for-intern
 /bin/bash setup.sh
 ```

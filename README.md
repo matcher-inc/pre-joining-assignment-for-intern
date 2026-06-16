@@ -18,7 +18,7 @@
 > - [新しい SSH キーを追加する](https://docs.github.com/ja/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
 
 ```sh
-git clone git@github.com:<owner-name>/pre-joining-assignment-for-intern.git ~
+git clone git@github.com:<owner-name>/pre-joining-assignment-for-intern.git ~/pre-joining-assignment-for-intern
 cd ~/pre-joining-assignment-for-intern
 /bin/bash setup.sh
 ```

@@ -11,10 +11,14 @@
 ## セットアップ
 
 > [!IMPORTANT]
-> 必ず Fork をしてください。
+> 必ず Fork をしてください。Fork のやり方がわからなければ下記記事を参考にしてください。
+> - [リポジトリをフォークする](https://docs.github.com/ja/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo)
+> Git SSH 環境を整えてください。Git SSH 環境がなければ下記記事を参考にしてください。
+> - [新しい SSH キーを生成する](https://docs.github.com/ja/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
+> - [新しい SSH キーを追加する](https://docs.github.com/ja/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
 
 ```sh
-git clone https://github.com/<owner>/pre-joining-assignment-for-intern.git ~
+git clone git@github.com:<owner-name>/pre-joining-assignment-for-intern.git ~
 cd ~/pre-joining-assignment-for-intern
 /bin/bash setup.sh
 ```

@@ -1,0 +1,13 @@
+FROM ruby:4.0.5
+
+ARG BUNDLE_PATH
+ARG WORKING_DIR
+
+ENV BUNDLE_PATH=${BUNDLE_PATH}
+ENV WORKING_DIR=${WORKING_DIR}
+
+WORKDIR ${WORKING_DIR}
+
+COPY app/Gemfile app/Gemfile.lock ./
+
+RUN bundle install

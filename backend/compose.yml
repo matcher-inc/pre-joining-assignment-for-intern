@@ -1,0 +1,19 @@
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+      args:
+        BUNDLE_PATH: ${BUNDLE_PATH}
+        WORKING_DIR: ${WORKING_DIR}
+    environment:
+      BUNDLE_PATH: ${BUNDLE_PATH}
+      WORKING_DIR: ${WORKING_DIR}
+      PORT: ${PORT}
+    volumes:
+      - bundle_dir:${BUNDLE_PATH}
+      - ./app:${WORKING_DIR}
+    command: sh -lc "bundle exec rails s -p $$PORT -b '0.0.0.0'"
+
+volumes:
+  bundle_dir:

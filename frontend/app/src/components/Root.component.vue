@@ -1,3 +1,5 @@
+<!-- このファイルは削除して結構です！ -->
+
 <script lang="ts">
 export default {}
 </script>

@@ -24,6 +24,8 @@ cd ~/pre-joining-assignment-for-intern
 /bin/bash setup.sh
 ```
 
+- ページ URL: [http://localhost:5173/](http://localhost:5173/)
+
 ## コマンド一覧
 
 ```sh

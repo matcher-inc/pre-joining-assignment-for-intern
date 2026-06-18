@@ -68,9 +68,24 @@ https://github.com/user-attachments/assets/ba56b2ec-2df2-44a3-aef0-b856956b6d90
 
 ## 技術スタック
 
-- Vue
+- Vue 3
+  - HTML
+  - CSS（SCSS）
+  - JavaScript（TypeScript）
 - Rails
-- MySQL
+- MySQL 8
+
+### Vue について
+**Vue** とは動的な Web アプリケーション開発を促進してくれるツールです！
+そして、この Vue には二つの書き方 **`Options API`** **`Composition API`** が存在します！
+本課題では前者の **`Options API`** という書き方で実装するようにお願いします！
+
+- [Vue 3 - 二つの API スタイル](https://ja.vuejs.org/guide/introduction.html#api-stlyes)
+- [Vue 3 - ガイド](https://ja.vuejs.org/guide/introduction.html)
+
+また、ドキュメントを閲覧する際は左上の「API 選択」について `Options` を設定して閲覧してください！
+
+<img width="488" height="386" alt="image" src="https://github.com/user-attachments/assets/3d89677a-6c05-4bfb-a02d-f3a85fd50197" />
 
 ## セットアップ
 

@@ -147,14 +147,6 @@ docker compose run --rm backend sh -lc 'bundle exec rails db:migrate:status'
 # 要件
 タスク共有掲示板 Web アプリケーションを作成する。
 
-## ユーザーストーリー
-
-```mermaid
-graph TD
-```
-
-# 要件
-
 ## 全体
 
 - このアプリでは認証情報を必要とする。つまり、ユーザー情報がない（サインインしない）と使用できない。
@@ -162,7 +154,7 @@ graph TD
 - 認証情報がなければサインインページに遷移する
 - 存在しないページにアクセスした場合は 404 ページを返す
 
-## データベース
+## データベース スキーマ
 
 ```mermaid
 erDiagram
@@ -192,12 +184,23 @@ follows {
   target_user_id integer FK "フォローされたユーザーID"
 }
 
+favorite_tasks {
+  id integer PK
+  user_id integer FK "お気に入りをしたユーザーID"
+  task_id integer FK "お気に入りされたタスクID"
+}
+
 users ||--o| user_authentications : ""
 users ||--o{ tasks : ""
 users ||--o{ follows : ""
 ```
 
 ## サインアップ
+
+| URL or Endpoint | Path | 詳細 |
+| --- | --- | -- |
+| Vue Router ページ URL | `/signup` | サインアップページ |
+| Rails エンドポイント | `POST /api/signup` | 新規登録処理 |
 
 - 本アプリでは次の認証情報を必要とする
   - ユーザー識別子（ `user_authentications.identifier` ）
@@ -221,20 +224,46 @@ users ||--o{ follows : ""
 
 ## サインイン
 
-- サインイン時には
-- データベースに保存されているユーザー情報と、入力されたユーザー情報に誤りがある場合はエラーを発生させること
+| URL or Endpoint | Path | 詳細 |
+| --- | --- | -- |
+| Vue Router ページ URL | `/signin` | サインインページ |
+| Rails エンドポイント | `POST /api/signin` | 認証処理 |
+
+- サインイン時にはユーザー識別子とパスワードで認証をする
 - パスワード入力欄はマスキングすること
+- 入力されたユーザー識別子（ `user_authentications.identifier` ）とパスワード（ `user_authentications.encrypted_password` ）が存在すれば認証成功とする。
+- 存在しない場合はエラーを発生されること。
 - エラーが発生した場合はブラウザで使用できる JavaScript のメソッド `window.alert` でエラー内容をユーザーに伝達すること
 - 成功時はトップページに遷移すること
 
-## タスク投稿
+## トップページ
+
+| URL or Endpoint | Path | 詳細 |
+| :-: | --- | -- |
+| Vue Router ページ URL | `/` | トップページ |
+| Rails エンドポイント | `GET /api/tasks` | タスク一覧取得処理 |
+| 〃 | `GET /api/tasks` | タスク一覧取得処理 |
+| 〃 | `POST /api/tasks` | タスク作成処理 |
+| 〃 | `PATCH /api/tasks/:task_id` | タスク更新処理 |
+| 〃 | `PUT /api/tasks/:task_id/complete` | タスク完了化処理 |
+| 〃 | `PUT /api/tasks/:task_id/incomplete` | タスク未完了化処理 |
+
+- 画面上部（PCだと1/4、SPだと1/3のサイズ）にタスク作成フォームを置く。
+- タスク作成フォームは sticky に
+- タスク作成フォームの下に一覧をを置く。
+- 一覧のタスク表示は 15 件までとする。それ以降は「さらに読み込む」を設置して追加読み込みをできるようにする。
+- タスク作成フォームと一覧の間にナビゲーションバーを設置し、my タスク か みんなのタスク か フォローユーザーのタスクを選択して一覧表示したいタスクを選ぶ。
+- みんなのタスクには自分以外のユーザーの全てのタスクを表示する。
+- フォローユーザーのタスクはフォローしているユーザーのタスクだけ表示する。
+- 完了 / 未完了のチェックボックスを設置して、表示する条件を付与する
+- お気に入り機能
+
+### タスク作成フォーム
+
+### タスク一覧表示
+
+## タスク作成
 
 - XSS などのセキュリティリスクが生じないようにすること。
 
-## タスク完了
-
-## タスク一覧表示
-
 ## ユーザー詳細ページ表示
-
-# 詳細設計

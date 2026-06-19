@@ -207,7 +207,7 @@ users ||--o{ follows : ""
 
 | URL or Endpoint | Path | 詳細 |
 | :-: | --- | -- |
-| 〃 | `PATCH /api/tasks/:task_id` | タスク更新処理 |
+| Rails エンドポイント | `PATCH /api/tasks/:task_id` | タスク更新処理 |
 
 - サインイン中のユーザー自身が作成したタスクの内容 （ `tasks.body` ）を編集することができる
 - 編集された `tasks.body` と、編集された時刻を `tasks.edited_at` に入れてレコードを更新する

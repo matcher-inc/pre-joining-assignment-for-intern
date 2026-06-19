@@ -72,7 +72,8 @@ https://github.com/user-attachments/assets/ba56b2ec-2df2-44a3-aef0-b856956b6d90
   - HTML
   - CSS（SCSS）
   - JavaScript（TypeScript）
-- Rails
+  - Vue Router
+- Rails 8
 - MySQL 8
 
 ### Vue について
@@ -130,3 +131,110 @@ docker compose run --rm backend sh -lc 'bundle exec rails db:migrate'
 ## DB Migration Status
 docker compose run --rm backend sh -lc 'bundle exec rails db:migrate:status'
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+# 要件
+タスク共有掲示板 Web アプリケーションを作成する。
+
+## ユーザーストーリー
+
+```mermaid
+graph TD
+```
+
+# 要件
+
+## 全体
+
+- このアプリでは認証情報を必要とする。つまり、ユーザー情報がない（サインインしない）と使用できない。
+  - Rails の session 機能を使って認証情報があるかどうかを判断する。
+- 認証情報がなければサインインページに遷移する
+- 存在しないページにアクセスした場合は 404 ページを返す
+
+## データベース
+
+```mermaid
+erDiagram
+
+users {
+  id integer PK
+  name string "nullable"
+}
+
+user_authentications {
+  identifer string PK
+  user_id integer FK
+  encryped_password string
+}
+
+tasks {
+  id integer PK
+  user_id integer FK
+  body string
+  boolean is_completed "defalut: false"
+  datetime created_at
+}
+
+follows {
+  id integer PK
+  user_id integer FK "フォローをしたユーザーID"
+  target_user_id integer FK "フォローされたユーザーID"
+}
+
+users ||--o| user_authentications : ""
+users ||--o{ tasks : ""
+users ||--o{ follows : ""
+```
+
+## サインアップ
+
+- 本アプリでは次の認証情報を必要とする
+  - ユーザー識別子（ `user_authentications.identifier` ）
+    - 8文字以上、32文字以下で設定可能（それ以外は🙅🏻‍♂️）
+    - 半角英字（ `a-z` | `A-Z` ）、半角数字（ `0-9` ）、アンダースコア（ `_` ）のみ使用可能
+    - 他のユーザーと重複してユーザー識別子を登録できない（一意であること）
+  - パスワード（ `` ）
+    - 8文字以上、32文字以下で設定可能（それ以外は🙅🏻‍♂️）
+    - 半角英字（ `a-z` | `A-Z` ）、半角数字（ `0-9` ）、一部記号（ `_` | `-` | `@` ）のみ使用可能
+    - データベースには平文で保存するのではなく、ハッシュ化して安全に保存すること
+- フォームにはユーザー識別子、パスワード、また入力ミス防止のため、パスワード確認用の入力欄を用意する
+- パスワード入力欄はマスキングすること
+- 「新規登録」ボタンを用意し、クリックして新規登録処理を走らせる
+- 上記で掲示しているユーザー情報の条件に一つでも一致しない場合はエラーを発生させること
+- 入力情報に問題がなければ `users` テーブルを作成し、`user_authentications` テーブルを作成する
+  - `user_authentications.user_id` は作成した `users.user_id` とする
+  - `user_authentications.identifier` は入力されたユーザー識別子を入れる
+  - `user_authentications.encryped_password` は入力されたパスワードをハッシュ化して入れる
+- エラーが発生した場合はブラウザで使用できる JavaScript のメソッド `window.alert` でエラー内容をユーザーに伝達すること
+- 成功時はトップページに遷移すること
+
+## サインイン
+
+- サインイン時には
+- データベースに保存されているユーザー情報と、入力されたユーザー情報に誤りがある場合はエラーを発生させること
+- パスワード入力欄はマスキングすること
+- エラーが発生した場合はブラウザで使用できる JavaScript のメソッド `window.alert` でエラー内容をユーザーに伝達すること
+- 成功時はトップページに遷移すること
+
+## タスク投稿
+
+- XSS などのセキュリティリスクが生じないようにすること。
+
+## タスク完了
+
+## タスク一覧表示
+
+## ユーザー詳細ページ表示
+
+# 詳細設計

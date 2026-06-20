@@ -302,7 +302,7 @@ tasks ||--o{ favorite_tasks : ""
 
 ### 1. リポジトリの fork
 
-1. [本リポジトリ](https://github.com/matcher-inc/pre-joining-assignment-for-intern) にアクセスし
+1. [本リポジトリ](https://github.com/matcher-inc/pre-joining-assignment-for-intern) にアクセス
 2. 右上の Fork をクリック
 3. 自身の GitHub アカウントにリポジトリを作成
 
@@ -324,6 +324,7 @@ Host github.com
   AddKeysToAgent yes
   UseKeyChain yes
   IdentityFile ~/.ssh/github
+
 EOS
 ```
 </details>

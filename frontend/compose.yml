@@ -5,9 +5,8 @@ services:
       dockerfile: ./Dockerfile
       args:
         WORKING_DIR: ${WORKING_DIR}
-    environment:
-      WORKING_DIR: ${WORKING_DIR}
-      PORT: ${PORT}
+    env_file:
+      - ./.env
     volumes:
       - ./app:${WORKING_DIR}
     ports:

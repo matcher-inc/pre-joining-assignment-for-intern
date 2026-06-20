@@ -6,10 +6,8 @@ services:
       args:
         BUNDLE_PATH: ${BUNDLE_PATH}
         WORKING_DIR: ${WORKING_DIR}
-    environment:
-      BUNDLE_PATH: ${BUNDLE_PATH}
-      WORKING_DIR: ${WORKING_DIR}
-      PORT: ${PORT}
+    env_file:
+      - ./.env
     volumes:
       - bundle_dir:${BUNDLE_PATH}
       - ./app:${WORKING_DIR}

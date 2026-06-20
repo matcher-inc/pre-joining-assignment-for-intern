@@ -15,25 +15,47 @@ https://github.com/user-attachments/assets/ba56b2ec-2df2-44a3-aef0-b856956b6d90
 
 ## 技術スタック
 
-- Vue 3
-  - HTML
-  - CSS（SCSS）
-  - JavaScript（TypeScript）
-  - Vue Router
-- Rails 8
-- MySQL 8
+### Vue
 
-### Vue について
-**Vue** とは動的な Web アプリケーション開発を促進してくれるツールです！
-そして、この Vue には二つの書き方 **`Options API`** **`Composition API`** が存在します！
+ユーザーインターフェースの構築のための JavaScript フレームワークで、本課題ではフロントエンドとして使用します。
+
+Vue には二つの書き方 **`Options API`** **`Composition API`** が存在します！
 本課題では前者の **`Options API`** という書き方で実装するようにお願いします！
-
-- [Vue 3 - 二つの API スタイル](https://ja.vuejs.org/guide/introduction.html#api-stlyes)
-- [Vue 3 - ガイド](https://ja.vuejs.org/guide/introduction.html)
 
 また、ドキュメントを閲覧する際は左上の「API 選択」について `Options` を設定して閲覧してください！
 
 <img width="488" height="386" alt="image" src="https://github.com/user-attachments/assets/3d89677a-6c05-4bfb-a02d-f3a85fd50197" />
+
+**関連技術スタック**
+
+- HTML
+- CSS(SCSS/SASS)
+- JavaScript(TypeScript)
+- Vue Router
+
+**参考資料**
+
+- [はじめに - Vue.js](https://ja.vuejs.org/guide/introduction.html)
+- [Vue 3 - 二つの API スタイル](https://ja.vuejs.org/guide/introduction.html#api-stlyes)
+- [Vue 3 - ガイド](https://ja.vuejs.org/guide/introduction.html)
+
+### Ruby on Rails
+
+プログラミング言語 **Ruby** で実装された、MVC(Model / View / Controller) 設計アーキテクチャの Web フレームワークで、本課題においては Web サーバーサイドとして使用します。
+
+**参考資料**
+
+- [Rails を始めよう - Rails ガイド](https://railsguides.jp/getting_started.htm)
+- [MVCモデルについて #プログラミング - Qiita](https://qiita.com/riku-shiru/items/2bed096e106e72e0b58a)
+
+### MySQL
+
+MySQL は、オープンソースのリレーショナルデータベース管理システムである。
+
+**参考資料**
+
+- [MySQL :: MySQL 8.0 リファレンスマニュアル](https://dev.mysql.com/doc/refman/8.0/ja/)
+
 
 ## セットアップ
 
@@ -136,8 +158,8 @@ tasks ||--o{ favorite_tasks : ""
 
 | URL or Endpoint | Path | 詳細 |
 | --- | --- | -- |
-| Vue Router ページ URL | `/signup` | サインアップページ |
-| Rails エンドポイント | `POST /api/signup` | 新規登録処理 |
+| Vue Router ページ URL | `/sign_up` | サインアップページ |
+| Rails エンドポイント | `POST /api/users` | 新規登録処理 |
 
 - 本アプリでは次の認証情報を必要とする
   - ユーザー識別子（ `user_authentications.identifier` ）
@@ -272,3 +294,104 @@ tasks ||--o{ favorite_tasks : ""
   <summary><h3>👹 裏メニュー</h3></summary>
   🚜 工事中 🚜
 </details>
+
+# Step 0: ⚙️ 環境構築
+
+実装にあたり、環境構築をする必要があります。
+以下のステップに沿って開発環境を整備してください。
+
+### 1. リポジトリの fork
+
+1. [本リポジトリ](https://github.com/matcher-inc/pre-joining-assignment-for-intern) にアクセスし
+2. 右上の Fork をクリック
+3. 自身の GitHub アカウントにリポジトリを作成
+
+### 2. リポジトリの clone
+
+<details>
+  <summary><h4>SSHを設定済みでない場合</h4></summary>
+
+  1. お好きなターミナルアプリを開く
+  2. `mkdir -p ~/.ssh && cd ~/.ssh` を実行
+  3. `ssh-keygen -t ed25519 -C "your_email@example.com"` を実行
+  4. `> Enter a file in which to save the key ...` と出力されたら `github` と入力
+  5. コマンド実行が完了するまで Enter を入力
+  6. 以下をペースト
+
+```sh
+cat <<EOS >> ~/.ssh/config
+Host github.com
+  AddKeysToAgent yes
+  UseKeyChain yes
+  IdentityFile ~/.ssh/github
+EOS
+```
+</details>
+
+
+1. Fork したリポジトリにアクセス
+2. Code をクリックし、SSH のコマンドをコピー
+3. お好きなターミナルアプリを開く
+4. `cd ~` でホームディレクトリに移動
+5. `git clone` まで入力し、コピーしたコマンドをペースト
+
+## セットアップ
+
+> [!IMPORTANT]
+> 必ず Fork をしてください。Fork のやり方がわからなければ下記記事を参考にしてください。
+> - [リポジトリをフォークする](https://docs.github.com/ja/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo)
+>
+> Git SSH 環境を整えてください。Git SSH 環境がなければ下記記事を参考にしてください。
+> - [新しい SSH キーを生成する](https://docs.github.com/ja/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
+> - [新しい SSH キーを追加する](https://docs.github.com/ja/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
+
+```sh
+git clone git@github.com:<owner-name>/pre-joining-assignment-for-intern.git ~/pre-joining-assignment-for-intern
+cd ~/pre-joining-assignment-for-intern
+/bin/bash setup.sh
+```
+
+### 3. セットアップコマンドの実行
+
+# Step 1: ✍️ サインアップ機能
+
+## 要件
+
+ユーザーとそれに紐づく認証データを作成する
+
+### データベース
+
+- `users`: ユーザー情報
+  - `id`: 主キー
+  - `name`: ユーザー名
+- `user_authentications`: 認証情報
+  - `identifier`: 認証のための `user_authentications` テーブル上で一意な識別子
+  - `user_id`: 紐づく `users` レコード
+  - `encryped_password`: アカウントの持ち主であることを証明するハッシュ化された認証パスワード、**平文で保存しないこと**
+
+```mermaid
+erDiagram
+
+users {
+  id integer PK
+  name string "nullable"
+}
+
+user_authentications {
+  identifier string PK
+  user_id integer FK "unique"
+  encryped_password string
+}
+
+users ||--o| user_authentications : ""
+```
+
+### Rails
+
+#### Model
+
+#### Controller
+
+### Vue
+
+### 参考資料

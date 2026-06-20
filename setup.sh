@@ -15,6 +15,16 @@ cp ./backend/.env.example ./backend/.env
 cp ./frontend/.env.example ./frontend/.env
 cp ./db/.env.example ./db/.env
 
+sed -i '' "s/MYSQL_ROOT_PASSWORD=/MYSQL_ROOT_PASSWORD=$(openssl rand -hex 32)/" ./db/.env
+sed -i '' "s/DATABASE_USER_PASSWORD=/DATABASE_USER_PASSWORD=$(openssl rand -hex 32)/" ./backend/.env
+
+set -a
+. ./backend/.env
+. ./db/.env
+set +a
+
+# Setup Container
+
 docker compose build --no-cache
 
 # node_modules

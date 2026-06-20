@@ -108,7 +108,7 @@ user_authentications {
 tasks {
   id integer PK
   user_id integer FK
-  body string
+  string body
   boolean is_completed "defalut: false"
   datetime created_at
   datetime edited_at "nullable"

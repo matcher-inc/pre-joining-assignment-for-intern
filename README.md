@@ -101,7 +101,7 @@ users {
 
 user_authentications {
   identifer string PK
-  user_id integer FK
+  user_id integer FK "unique"
   encryped_password string
 }
 

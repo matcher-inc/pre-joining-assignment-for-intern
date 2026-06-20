@@ -31,7 +31,31 @@ docker compose build --no-cache
 docker compose run --rm frontend sh -lc 'npm i'
 
 # DB
-docker compose run --rm backend sh -lc 'bundle exec rails db:drop db:create db:migrate'
+docker compose up -d --wait db
+
+docker compose exec -T db mysql \
+  -uroot \
+  -p"${MYSQL_ROOT_PASSWORD}" <<QUERY
+    CREATE DATABASE IF NOT EXISTS \`${DATABASE_TABLE_NAME}\`
+      CHARACTER SET ${DATABASE_CHARSET}
+      COLLATE ${DATABASE_COLLATION};
+    CREATE USER IF NOT EXISTS '${DATABASE_USER_NAME}'@'%' IDENTIFIED BY '${DATABASE_USER_PASSWORD}';
+    GRANT
+      ALTER,
+      CREATE,
+      CREATE TEMPORARY TABLES,
+      DELETE,
+      DROP,
+      INDEX,
+      INSERT,
+      REFERENCES,
+      SELECT,
+      UPDATE
+    ON \`${DATABASE_TABLE_NAME}\`.* TO '${DATABASE_USER_NAME}'@'%';
+    FLUSH PRIVILEGES;
+QUERY
+
+docker compose run --rm backend sh -lc 'bundle exec rails db:migrate'
 
 docker compose stop
 

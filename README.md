@@ -111,7 +111,6 @@ tasks {
   string body
   boolean is_completed "defalut: false"
   datetime created_at
-  datetime edited_at "nullable"
 }
 
 follows {

@@ -157,7 +157,7 @@ tasks ||--o{ favorite_tasks : ""
   - `user_authentications.identifier` は入力されたユーザー識別子を入れる
   - `user_authentications.encryped_password` は入力されたパスワードをハッシュ化して入れる
 - エラーが発生した場合はブラウザで使用できる JavaScript のメソッド `window.alert` でエラー内容をユーザーに伝達すること
-- 成功時はトップページに遷移すること
+- 成功時はサインインページに遷移すること
 
 ## サインイン
 

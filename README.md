@@ -129,6 +129,8 @@ favorite_tasks {
 users ||--o| user_authentications : ""
 users ||--o{ tasks : ""
 users ||--o{ follows : ""
+users ||--o{ favorite_tasks : ""
+tasks ||--o{ favorite_tasks : ""
 ```
 
 ## サインアップ

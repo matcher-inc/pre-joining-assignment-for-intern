@@ -7,6 +7,9 @@ if [[ $? -eq 0 ]]; then
   exit 1
 fi
 
+# Clean up
+rm -rf ./db/.data
+
 # Setup Env
 cp ./backend/.env.example ./backend/.env
 cp ./frontend/.env.example ./frontend/.env

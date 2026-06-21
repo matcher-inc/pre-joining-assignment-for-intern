@@ -313,7 +313,7 @@ tasks ||--o{ favorite_tasks : ""
 
   1. お好きなターミナルアプリを開く
   2. `mkdir -p ~/.ssh && cd ~/.ssh` を実行
-  3. `ssh-keygen -t ed25519 -C "your_email@example.com"` を実行
+  3. `ssh-keygen -t ed25519 -C "your_email@example.com"` を実行（メールアドレスは適宜変更してください）
   4. `> Enter a file in which to save the key ...` と出力されたら `github` と入力
   5. コマンド実行が完了するまで Enter を入力
   6. 以下をペースト

@@ -254,6 +254,8 @@ tasks ||--o{ favorite_tasks : ""
 
 </details>
 
+---
+
 # Step 0: ⚙️ 環境構築
 
 実装にあたり、環境構築をする必要があります。
@@ -307,6 +309,8 @@ EOS
 # Step 1: ✍️ サインアップ機能
 
 [🔗 要件書はこちらから](requirements/step1-sign_up.md)
+
+---
 
 #### コマンド一覧
 

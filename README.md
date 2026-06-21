@@ -334,25 +334,12 @@ EOS
 2. Code をクリックし、SSH のコマンドをコピー
 3. お好きなターミナルアプリを開く
 4. `cd ~` でホームディレクトリに移動
-5. `git clone` まで入力し、コピーしたコマンドをペースト
-
-## セットアップ
-
-> [!IMPORTANT]
-> 必ず Fork をしてください。Fork のやり方がわからなければ下記記事を参考にしてください。
-> - [リポジトリをフォークする](https://docs.github.com/ja/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo)
->
-> Git SSH 環境を整えてください。Git SSH 環境がなければ下記記事を参考にしてください。
-> - [新しい SSH キーを生成する](https://docs.github.com/ja/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent)
-> - [新しい SSH キーを追加する](https://docs.github.com/ja/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)
-
-```sh
-git clone git@github.com:<owner-name>/pre-joining-assignment-for-intern.git ~/pre-joining-assignment-for-intern
-cd ~/pre-joining-assignment-for-intern
-/bin/bash setup.sh
-```
+5. `git clone ` まで入力し、コピーしたコマンドをペースト
 
 ### 3. セットアップコマンドの実行
+
+1. `cd ~/pre-joining-assignment-for-intern` を実行
+2. `/bin/bash setup.sh` を実行
 
 # Step 1: ✍️ サインアップ機能
 

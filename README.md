@@ -147,7 +147,7 @@ tasks ||--o{ favorite_tasks : ""
 
 - サインイン時にはユーザー識別子とパスワードで認証をする
 - パスワード入力欄はマスキングすること
-- 入力されたユーザー識別子（ `user_authentications.identifier` ）とパスワード（ `user_authentications.encrypted_password` ）が存在すれば認証成功とする。
+- 入力されたユーザー識別子（ `user_authentications.identifier` ）とパスワード（ `user_authentications.password_digest` ）が存在すれば認証成功とする。
 - 存在しない場合はエラーを発生されること。
 - エラーが発生した場合はブラウザで使用できる JavaScript のメソッド `window.alert` でエラー内容をユーザーに伝達すること
 - 成功時はトップページに遷移すること

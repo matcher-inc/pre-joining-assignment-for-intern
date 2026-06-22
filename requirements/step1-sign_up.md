@@ -13,7 +13,7 @@
 - `users` レコードと `user_authentications` レコードを作成する
   - `users` レコードの作成と `user_authentications` の作成は一つの **トランザクション** にする
   - `users.name` はランダムに生成する
-  - `user_authentications.encryped_password` に保存するパスワードは **平文にせずハッシュ化** する
+  - `user_authentications.password_digest` に保存するパスワードは **平文にせずハッシュ化** する
 - エラーが発生した場合は `window.alert` 関数を使ってエラー内容をユーザーに知らせること
 - 成功時は `/sign_in` に遷移すること
 
@@ -33,7 +33,7 @@
     - 半角英字（ `a-z` | `A-Z` ）、半角数字（ `0-9` ）、アンダースコア（ `_` ）のみ使用可能
     - 他のユーザーと重複してユーザー識別子を登録できない（一意であること）
   - `user_id`: 紐づく `users` レコード
-  - `encryped_password`: アカウントの持ち主であることを証明するハッシュ化された認証パスワード
+  - `password_digest`: アカウントの持ち主であることを証明するハッシュ化された認証パスワード
     - 8文字以上、32文字以下で設定可能（それ以外は🙅🏻‍♂️）
     - 半角英字（ `a-z` | `A-Z` ）、半角数字（ `0-9` ）、アンダースコア（ `_` | `-` | `@` ）のみ使用可能
     - 値を平文で保存するのではなく、ハッシュ化して安全に保存すること
@@ -49,7 +49,7 @@ users {
 user_authentications {
   identifier string PK "ユーザー識別子"
   user_id integer FK "紐づく users レコードの主キー unique"
-  encryped_password string "ハッシュ化されたパスワード"
+  password_digest string "ハッシュ化されたパスワード"
 }
 
 users ||--o| user_authentications : ""

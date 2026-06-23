@@ -6,13 +6,19 @@
 
 ### 詳細
 
-- URL `/sign_up` にサインアップページが表示されること
-- ユーザー名、ユーザー識別子、パスワード、パスワード確認用のフォームを用意する
-  - パスワード入力欄はマスキングすること
-- Rails には `POST /api/users` にリクエストすること
+#### Rails
+
+- `routes.rb` に `POST /api/users` のエンドポイントを定義する
+- コントローラー名は `UsersController` とする
 - `users` レコードと `user_authentications` レコードを作成する
   - `users` レコードの作成と `user_authentications` の作成は一つの **トランザクション** にする
   - `user_authentications.password_digest` に保存するパスワードは **平文にせずハッシュ化** する
+
+#### Vue
+
+- Vue Router に `/sign_up` のルーティングを追加する
+- ユーザー名、ユーザー識別子、パスワード、パスワード確認用のフォームを用意する
+  - パスワード入力欄はマスキングすること
 - エラーが発生した場合は `window.alert` 関数を使ってエラー内容をユーザーに知らせること
 - 成功時は `/sign_in` に遷移すること
 

@@ -8,6 +8,8 @@ services:
         WORKING_DIR: ${WORKING_DIR}
     env_file:
       - ./.env
+    ports:
+      - ${PORT}:${PORT}
     volumes:
       - bundle_dir:${BUNDLE_PATH}
       - ./app:${WORKING_DIR}

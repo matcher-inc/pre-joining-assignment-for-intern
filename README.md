@@ -356,5 +356,5 @@ EOS
 docker compose up
 
 # コンテナ実行（デタッチ）
-docker compose up -d
+docker compose up -d --wait
 ```

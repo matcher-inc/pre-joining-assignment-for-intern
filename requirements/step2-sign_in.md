@@ -8,7 +8,11 @@
 
 - 完成系
 
+https://github.com/user-attachments/assets/767b1e86-74dd-4613-b9a2-25ae0aeda712
+
 - 異常系
+
+https://github.com/user-attachments/assets/d128dc93-3f92-4a60-b3ff-675dc1deee00
 
 ## 詳細
 

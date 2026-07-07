@@ -27,6 +27,7 @@ https://github.com/user-attachments/assets/d128dc93-3f92-4a60-b3ff-675dc1deee00
 
 ### Vue
 
+- `frontend/app/src/pages` に `sign_in` ディレクトリを追加し、`index.vue` を作成する
 - `/sign_in` ルーティングの追加
 - ユーザー識別子、パスワード、フォーム送信ボタンを用意する
   - パスワード入力欄はマスキングすること

@@ -27,6 +27,7 @@ https://github.com/user-attachments/assets/21dc285f-29f9-42ed-bdbe-07e611c6a9da
 
 ### Vue
 
+- `frontend/app/src/pages` に `sign_up` ディレクトリを追加し、`index.vue` を作成する
 - Vue Router に `/sign_up` のルーティングを追加する
 - ユーザー名、ユーザー識別子、パスワード、パスワード確認用のフォーム、フォーム送信ボタンを用意する
   - パスワード入力欄はマスキングすること

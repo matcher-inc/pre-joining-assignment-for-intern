@@ -19,6 +19,7 @@
 - アクション名は `create` とする
 - `identifier` と `password` を受け取り、一致する `user_authentications` があれば Rails session に `user_authentications.identifier` を保存する
   - `session[:identifier] = xxx`
+- すでに認証済みのセッションであれば `/` にリダイレクトするように
 
 ### Vue
 
@@ -40,3 +41,4 @@
 **📚 参考資料**
 
 - [🔗 【Rails】Sessionの使い方について - Qiita](https://qiita.com/ozackiee/items/4ee774c81b2a0c571c05)
+- [🔗 Rails セキュリティガイド - Rails ガイド](https://railsguides.jp/security.html)

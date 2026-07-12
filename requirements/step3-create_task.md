@@ -7,7 +7,13 @@
 
 ## サンプルビデオ
 
-準備中 🚜
+- 完成系（ログイン~タスク作成まで）
+
+https://github.com/user-attachments/assets/ea54df7a-384e-4f58-b70c-d3f105459acb
+
+- 異常系
+
+https://github.com/user-attachments/assets/2177ec41-80d7-4287-9365-c23fcdd2b01a
 
 ## 詳細
 

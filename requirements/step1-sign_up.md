@@ -18,9 +18,13 @@ https://github.com/user-attachments/assets/21dc285f-29f9-42ed-bdbe-07e611c6a9da
 
 ### Rails
 
-- `routes.rb` に `POST /api/users` のエンドポイントを定義する
+- 次のエンドポイントを作成する
+
+| HTTP メソッド | パス | アクション名 | 用途 |
+| --- | --- | --- | --- |
+| `POST` | `/api/users` | `create` | ユーザーと認証情報を作成する |
+
 - コントローラー名は `UsersController` とする
-- アクション名は `create` とする
 - `users` レコードと `user_authentications` レコードを作成する
   - `users` レコードの作成と `user_authentications` の作成は一つの **トランザクション** にする
   - `user_authentications.password_digest` に保存するパスワードは **平文にせずハッシュ化** する

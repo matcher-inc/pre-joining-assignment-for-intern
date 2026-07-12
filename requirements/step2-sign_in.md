@@ -18,12 +18,20 @@ https://github.com/user-attachments/assets/d128dc93-3f92-4a60-b3ff-675dc1deee00
 
 ### Rails
 
-- `POST /api/sessions` エンドポイントを作成
+- 次のエンドポイントを作成する
+
+| HTTP メソッド | パス | アクション名 | 用途 |
+| --- | --- | --- | --- |
+| `GET` | `/api/sessions/new` | `new` | 現在のセッションが認証済みか確認する |
+| `POST` | `/api/sessions` | `create` | サインインセッションを作成する |
+
 - コントローラー名は `SessionsController` とする
-- アクション名は `create` とする
+- `new` では Rails session に保存されているユーザー識別子を確認する
+  - 認証済みの場合は `{ status: "authenticated" }` を返す
+  - 未認証の場合は `{ status: "unauthenticated" }` を返す
 - `identifier` と `password` を受け取り、一致する `user_authentications` があれば Rails session に `user_authentications.identifier` を保存する
   - `session[:identifier] = xxx`
-- すでに認証済みのセッションであれば `/` にリダイレクトするように
+- `create` は、すでに認証済みのセッションではエラーを返す
 
 ### Vue
 
@@ -31,6 +39,8 @@ https://github.com/user-attachments/assets/d128dc93-3f92-4a60-b3ff-675dc1deee00
 - `/sign_in` ルーティングの追加
 - ユーザー識別子、パスワード、フォーム送信ボタンを用意する
   - パスワード入力欄はマスキングすること
+- `mounted` を使ってページ読み込み時に `GET /api/sessions/new` を呼び出す
+  - すでに認証済みの場合は `window.alert` 関数で通知し、`/` に遷移する
 - エラーが発生した場合は `window.alert` 関数を使ってエラー内容をユーザーに知らせること
 - 成功時は `/` に遷移すること
 

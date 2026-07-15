@@ -42,7 +42,7 @@ https://github.com/user-attachments/assets/d128dc93-3f92-4a60-b3ff-675dc1deee00
 - `mounted` を使ってページ読み込み時に `GET /api/sessions/new` を呼び出す
   - すでに認証済みの場合は `window.alert` 関数で通知し、`/` に遷移する
 - エラーが発生した場合は `window.alert` 関数を使ってエラー内容をユーザーに知らせること
-- 成功時は `/` に遷移すること
+- 成功時は Vue Router の `router.push` を使わず、`window.location.href = "/"` を使って `/` に遷移すること
 
 ### エラーハンドリング
 

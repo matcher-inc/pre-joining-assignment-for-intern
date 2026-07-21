@@ -191,16 +191,6 @@ tasks ||--o{ favorite_tasks : ""
 - `tasks` レコード作成時にリクエストされたタスク内容が空（null or 空文字）の場合はエラーを発生させる
 - エラーが発生した場合は `window.alert` でユーザーに通達する
 
-### タスク編集フォーム
-
-|   URL or Endpoint    | Path                        | 詳細           |
-| :------------------: | --------------------------- | -------------- |
-| Rails エンドポイント | `PATCH /api/tasks/:task_id` | タスク更新処理 |
-
-- サインイン中のユーザー自身が作成したタスクの内容 （ `tasks.body` ）を編集することができる
-- 編集された `tasks.body` と、編集された時刻を `tasks.edited_at` に入れてレコードを更新する
-- サインイン中のユーザー以外が作成したタスクは編集できない
-
 ### タスク完了化 / 未完了化
 
 |   URL or Endpoint    | Path                                 | 詳細               |
@@ -335,17 +325,13 @@ EOS
 
 [🔗 要件書はこちらから](requirements/step5-toggle_task_todo.md)
 
-# Step 6: 📇 タスク編集機能
+# Step 6: 🌟 タスクお気に入り機能
 
-[🔗 要件書はこちらから](requirements/step6-edit_task.md)
+[🔗 要件書はこちらから](requirements/step6-add_favorite_task.md)
 
-# Step 7: 🌟 タスクお気に入り機能
+# Step 7: 👥 フォロー / アンフォロー機能
 
-[🔗 要件書はこちらから](requirements/step7-add_favorite_task.md)
-
-# Step 8: 👥 フォロー / アンフォロー機能
-
-[🔗 要件書はこちらから](requirements/step8-follow_and_unfollow.md)
+[🔗 要件書はこちらから](requirements/step7-follow_and_unfollow.md)
 
 ---
 

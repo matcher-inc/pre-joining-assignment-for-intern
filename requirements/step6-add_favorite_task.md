@@ -6,16 +6,20 @@
 
 また、お気に入り登録したタスクを一覧表示できるようにする
 
+## サンプルビデオ
+
+<https://github.com/user-attachments/assets/5c66ed9e-8fca-4c84-a53f-3f99c04269b3>
+
 ## 詳細
 
 ### Rails
 
 - 次のエンドポイントを作成する
 
-| HTTP メソッド | パス | アクション名 | 用途 |
-| --- | --- | --- | --- |
-| `POST` | `/api/tasks/:task_id/favorite` | `create` | タスクをお気に入り登録する |
-| `DELETE` | `/api/tasks/:task_id/favorite` | `destroy` | タスクのお気に入りを解除する |
+| HTTP メソッド | パス                           | アクション名 | 用途                         |
+| ------------- | ------------------------------ | ------------ | ---------------------------- |
+| `POST`        | `/api/tasks/:task_id/favorite` | `create`     | タスクをお気に入り登録する   |
+| `DELETE`      | `/api/tasks/:task_id/favorite` | `destroy`    | タスクのお気に入りを解除する |
 
 - コントローラー名は `FavoriteTasksController` とする
 - サインイン中のユーザーと対象タスクに紐づく `favorite_tasks` レコードを作成・削除する

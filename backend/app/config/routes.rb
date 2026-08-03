@@ -7,4 +7,19 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  namespace :api do
+    resources :users, only: [ :create ]
+    resources :sessions, only: [ :new, :create ]
+    resources :tasks, only: [ :index, :create ], param: :task_id do
+      member do
+        put :complete
+        put :incomplete
+      end
+    end
+    post "tasks/:task_id/favorite", to: "favorite_tasks#create"
+    delete "tasks/:task_id/favorite", to: "favorite_tasks#destroy"
+    put "users/follow/:target_user_id", to: "follows#create"
+    delete "users/follow/:target_user_id", to: "follows#destroy"
+  end
 end

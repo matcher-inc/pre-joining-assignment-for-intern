@@ -1,8 +1,8 @@
 #!/bin/bash
 
-_result=$(find .done.setup -type f 2>&1)
+set -euo pipefail
 
-if [[ $? -eq 0 ]]; then
+if [[ -f .done.setup ]]; then
   echo 'setup was done.' 1>&2
   exit 1
 fi
@@ -15,8 +15,12 @@ cp ./backend/.env.example ./backend/.env
 cp ./frontend/.env.example ./frontend/.env
 cp ./db/.env.example ./db/.env
 
-sed -i '' "s/MYSQL_ROOT_PASSWORD=/MYSQL_ROOT_PASSWORD=$(openssl rand -hex 32)/" ./db/.env
-sed -i '' "s/DATABASE_USER_PASSWORD=/DATABASE_USER_PASSWORD=$(openssl rand -hex 32)/" ./backend/.env
+mysql_root_password=$(openssl rand -hex 32)
+database_user_password=$(openssl rand -hex 32)
+# A backup suffix is required for compatibility with both BSD and GNU sed.
+sed -i.bak "s/^MYSQL_ROOT_PASSWORD=.*/MYSQL_ROOT_PASSWORD=${mysql_root_password}/" ./db/.env
+sed -i.bak "s/^DATABASE_USER_PASSWORD=.*/DATABASE_USER_PASSWORD=${database_user_password}/" ./backend/.env
+rm ./db/.env.bak ./backend/.env.bak
 
 set -a
 . ./backend/.env
